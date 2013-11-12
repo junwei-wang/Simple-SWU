@@ -1,18 +1,16 @@
 """
 " Filename:      simple_swu.sage
 " Author:        Junwei Wang(wakemecn@gmail.com)
-" Last Modified: 2013-11-12 19:07
+" Last Modified: 2013-11-12 19:37
 " Description:   Implementation of simple SWU
 """
 
-def genParams(k = 160):
-    """ Generate k-bit prime p, and choose to random elemnts from GF(P) """
-    p = 1
-    while (p % 4) == 1:
-        p = random_prime(2^k)
+def setParams():
+    """ set prime p, and choose two elemnts a, b from GF(P) """
+    p = 6277101735386680763835789423207666416083908700390324961279
     F = GF(p)
-    a = F.random_element()
-    b = F.random_element()
+    a = F(3)
+    b = F(0x64210519e59c80e70fa7e9ab72243049feb8deecc146b9b1)
     return (p, a, b)
 
 def simpleSWU(p, a, b, t):
@@ -35,7 +33,7 @@ def simpleSWU(p, a, b, t):
         return (x3, h3 ^ ((p+1)//4))
 
 def testSimpleSWU():
-    p, a, b = genParams()
+    p, a, b = setParams()
     t = GF(p).random_element()
     x, y = simpleSWU(p, a, b, t)
     print "p = ", p, "\na = ", a, "\nb = ", b, "\nx = ", x, "\ny = ", y
