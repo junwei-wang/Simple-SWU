@@ -2,7 +2,7 @@
 def genParams(k=160):
   p=1
   while (p % 4)==1:
-  p=random_prime(2^k)
+    p=random_prime(2^k)
   F=GF(p)
   a=F.random_element()
   b=F.random_element()
