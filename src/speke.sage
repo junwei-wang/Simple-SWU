@@ -1,9 +1,12 @@
 """
 " Filename:      speke.sage
 " Author:        Junwei Wang(wakemecn@gmail.com)
-" Last Modified: 2013-11-13 14:57
+" Last Modified: 2013-11-13 21:13
 " Description:   Implementation of Elliptic Curve
 """
+
+attach "simple_swu.sage" 
+attach "elliptic_curve.sage"
 
 def setParams():
     """ set prime p, and choose two elemnts a, b from GF(p) """

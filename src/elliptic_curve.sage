@@ -1,7 +1,7 @@
 """
 " Filename:      elliptic_curve.sage
 " Author:        Junwei Wang(wakemecn@gmail.com)
-" Last Modified: 2013-11-13 14:55
+" Last Modified: 2013-11-13 21:14
 " Description:   Implementation of Elliptic Curve
 """
 
@@ -70,7 +70,6 @@ def multiple(p, a, b, x, y, d):
 def inverse(p, a, b, x, y):
     """ compute -(x, y) on y^2 = x^3 + a*x + b % p """
     if not isOnEC(p, a, b, x, y):
-    if y != x^3 + a*x + b: 
 	print "Point P is not on the elliptic curve y^2 = x^3 + ", a,\
 	      "*x + ", b, " mod ", p
         exit()
