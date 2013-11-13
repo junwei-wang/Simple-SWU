@@ -1,7 +1,7 @@
 """
 " Filename:      simple_swu.sage
 " Author:        Junwei Wang(wakemecn@gmail.com)
-" Last Modified: 2013-11-12 19:37
+" Last Modified: 2013-11-13 14:49
 " Description:   Implementation of simple SWU
 """
 
@@ -9,7 +9,7 @@ def setParams():
     """ set prime p, and choose two elemnts a, b from GF(P) """
     p = 6277101735386680763835789423207666416083908700390324961279
     F = GF(p)
-    a = F(3)
+    a = F(-3)
     b = F(0x64210519e59c80e70fa7e9ab72243049feb8deecc146b9b1)
     return (p, a, b)
 
