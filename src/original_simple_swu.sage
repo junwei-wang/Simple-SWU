@@ -1,3 +1,4 @@
+" written by Jean-Sébastien Coron "
 def genParams(k=160):
   p=1
   while (p % 4)==1:
