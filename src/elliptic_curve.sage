@@ -1,12 +1,12 @@
 """
 " Filename:      elliptic_curve.sage
 " Author:        Junwei Wang(wakemecn@gmail.com)
-" Last Modified: 2013-11-14 19:22
+" Last Modified: 2013-11-14 20:19
 " Description:   Implementation of Elliptic Curve
 """
 
-def setParams():
-    """ Set the parameters of elliptic curve:
+def setParamsEC():
+    """ Set the parameters of elliptic curve, only used in test:
         - p is the order of the finite field,
         - a and b is the coefficient of elliptic curve, i.e., y^2 = x^3+a*x+b,
         - n is the order of the group on the elliptic curve,
@@ -84,6 +84,7 @@ def multiplication(p, a, b, e, P, d):
     
     Q = P
     dBits = d.bits()
+  # dBits = (d%n).bits();
     dBits.pop()
     for i in range(d.nbits() - 1):                # double andadd algorithm
 	Q = addition(p, a, b, e, Q, Q)
@@ -105,7 +106,7 @@ def inverse(p, a, b, e, P):
   
     
 def testEC():
-    p, a, b, n, G, e = setParams()
+    p, a, b, n, G, e = setParamsEC()
 
     print "G == G + e == e + G == (n+1) * G == 1 * G:", G\
        == addition(p, a, b, e, G, e)\

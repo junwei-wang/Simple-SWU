@@ -1,12 +1,15 @@
 """
 " Filename:      simple_swu.sage
 " Author:        Junwei Wang(wakemecn@gmail.com)
-" Last Modified: 2013-11-13 14:49
+" Last Modified: 2013-11-14 20:19
 " Description:   Implementation of simple SWU
 """
 
-def setParams():
-    """ set prime p, and choose two elemnts a, b from GF(P) """
+def setParamsSWU():
+    """ Set the parameters of SWU, only used in test:
+        - p is the order of the finite field,
+        - a and b is the coefficient of elliptic curve, i.e., y^2 = x^3+a*x+b,
+    """
     p = 6277101735386680763835789423207666416083908700390324961279
     F = GF(p)
     a = F(-3)
@@ -14,7 +17,7 @@ def setParams():
     return (p, a, b)
 
 def simpleSWU(p, a, b, t):
-    """ Hash t from GF(p) to point on elliptic curve y^2 = x^3 + ax + b """
+    " Hash t from GF(p) to point on elliptic curve y^2 = x^3 + ax + b "
     alpha = -t^2
     x2 = -(b / a) * (1 + 1/(alpha^2+alpha))
     x3 = alpha * x2
@@ -33,8 +36,8 @@ def simpleSWU(p, a, b, t):
         return (x3, h3 ^ ((p+1)//4))
 
 def testSimpleSWU():
-    p, a, b = setParams()
+    p, a, b = setParamsSWU()
     t = GF(p).random_element()
     x, y = simpleSWU(p, a, b, t)
-    print "p = ", p, "\na = ", a, "\nb = ", b, "\nx = ", x, "\ny = ", y
-    print "y^2 == x^3+ax+b:",y^2 == x^3+a*x+b
+    print "p =", p, "\na =", a, "\nb =", b, "\nx =", x, "\ny =", y
+    print "y^2 == x^3 + ax + b:",y^2 == x^3+a*x+b
